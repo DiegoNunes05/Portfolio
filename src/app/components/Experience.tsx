@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import DiscImage from "@/public/disc-rescue-network.png";
 
 export function Experience() {
   return (
@@ -212,8 +211,8 @@ export function Experience() {
             <div className="flex items-center gap-2">
               <span className="text-green-500">🌱</span>
               <span>
-                I'm currently learning Angular and Vue.js to expand my framework
-                expertise
+                &apos;I'm currently learning Angular and Vue.js to expand my
+                framework expertise&apos;
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -232,8 +231,8 @@ export function Experience() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-700 italic">
-            "Always seeking opportunities to collaborate with motivated
-            professionals on innovative and impactful projects."
+            &apos;Always seeking opportunities to collaborate with motivated
+            professionals on innovative and impactful projects.&apos;
           </p>
         </div>
       </div>

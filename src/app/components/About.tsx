@@ -22,29 +22,27 @@ export function About() {
                 </Avatar>
                 <div className="text-center">
                   <h3 className="text-xl font-semibold">{name}</h3>
-                  <p className="text-sm text-gray-500">
-                    UI/UX Designer & Developer
-                  </p>
+                  <p className="text-sm text-gray-500">Front-end Developer</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
-                  "Design isn't just about making things look pretty – it's
+                  &apos;Design isn't just about making things look pretty – it's
                   about solving problems and creating intuitive, enjoyable
-                  experiences for users."
+                  experiences for users.&apos;
                 </blockquote>
                 <p>
-                  I am a passionate interface designer dedicated to creating
-                  interactive and intuitive digital experiences. With over 5
-                  years of experience in front-end development,
-                  my goal is to combine aesthetics and functionality to create
-                  digital products that users love.
+                  &apos;I am a passionate interface designer dedicated to
+                  creating interactive and intuitive digital experiences. With
+                  over 5 years of experience in front-end development, my goal
+                  is to combine aesthetics and functionality to create digital
+                  products that users love.&apos;
                 </p>
                 <Separator />
                 <p>
-                  When I'm not designing interfaces, I enjoy exploring new
+                  &apos;When I'm not designing interfaces, I enjoy exploring new
                   design trends, contributing to open-source projects, and
-                  sharing knowledge with the design community.
+                  sharing knowledge with the design community.&apos;
                 </p>
               </div>
             </div>
