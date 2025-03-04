@@ -2,9 +2,10 @@
 
 import {useAppSelector} from "@/lib/redux/hooks";
 import {Button} from "@/components/ui/button";
+import Image from "next/image";
 
 export function Hero() {
-  const {name, title, description} = useAppSelector((state) => state.portfolio);
+  const {title, description} = useAppSelector((state) => state.portfolio);
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
@@ -14,7 +15,7 @@ export function Hero() {
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               Welcome to my portfolio!
               <br />
-              I'm {title}.
+              &apos;I'm&apos;{title}.
             </h1>
             <p className="max-w-[700px] text-gray-500 md:text-xl">
               {description}
@@ -33,7 +34,9 @@ export function Hero() {
           </div>
           <div className="flex justify-center">
             <div className="relative w-full max-w-md">
-              <img
+              <Image
+                width={30}
+                height={30}
                 src="/images/laptop-mockup.png"
                 alt="Portfolio Preview"
                 className="w-full h-auto"

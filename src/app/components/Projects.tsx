@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
+import Image from "next/image";
 
 export function Projects() {
   const {projects} = useAppSelector((state) => state.portfolio);
@@ -25,7 +26,9 @@ export function Projects() {
           {projects.map((project) => (
             <Card key={project.id} className="overflow-hidden">
               <div className="aspect-video w-full relative">
-                <img
+                <Image
+                width={30}
+                height={30}
                   src={project.image}
                   alt={project.title}
                   className="object-cover w-full h-full"
