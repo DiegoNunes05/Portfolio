@@ -27,8 +27,8 @@ export function About() {
               </div>
               <div className="space-y-4">
                 <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
-                  &apos;Design isn't just about making things look pretty – it's
-                  about solving problems and creating intuitive, enjoyable
+                  &apos;Design isn&apos;t just about making things look pretty –
+                  it's about solving problems and creating intuitive, enjoyable
                   experiences for users.&apos;
                 </blockquote>
                 <p>
@@ -40,9 +40,10 @@ export function About() {
                 </p>
                 <Separator />
                 <p>
-                  &apos;When I'm not designing interfaces, I enjoy exploring new
-                  design trends, contributing to open-source projects, and
-                  sharing knowledge with the design community.&apos;
+                  &apos;When I&apos;m not designing interfaces, I enjoy
+                  exploring new design trends, contributing to open-source
+                  projects, and sharing knowledge with the design
+                  community.&apos;
                 </p>
               </div>
             </div>

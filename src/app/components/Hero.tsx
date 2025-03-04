@@ -15,7 +15,7 @@ export function Hero() {
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               Welcome to my portfolio!
               <br />
-              &apos;I'm&apos;{title}.
+              &apos;I&apos;m&apos;{title}.
             </h1>
             <p className="max-w-[700px] text-gray-500 md:text-xl">
               {description}

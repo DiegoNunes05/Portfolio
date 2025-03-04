@@ -211,8 +211,8 @@ export function Experience() {
             <div className="flex items-center gap-2">
               <span className="text-green-500">🌱</span>
               <span>
-                &apos;I'm currently learning Angular and Vue.js to expand my
-                framework expertise&apos;
+                &apos;I&apos;m currently learning Angular and Vue.js to expand
+                my framework expertise&apos;
               </span>
             </div>
             <div className="flex items-center gap-2">

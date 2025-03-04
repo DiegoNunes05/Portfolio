@@ -13,7 +13,7 @@ export function Contact() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Contact Me</h2>
           <p className="text-gray-500 mt-2">
-            &apos;Let's work together on your next project&apos;
+            &apos;Let&apos;s work together on your next project&apos;
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
