@@ -27,23 +27,22 @@ export function About() {
               </div>
               <div className="space-y-4">
                 <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
-                  &apos;Design isn&apos;t just about making things look pretty –
-                  it&apos;s about solving problems and creating intuitive,
-                  enjoyable experiences for users.&apos;
+                  Design isn&apos;t just about making things look
+                  pretty – it&apos;s about solving problems and creating
+                  intuitive, enjoyable experiences for users.
                 </blockquote>
                 <p>
-                  &apos;I am a passionate interface designer dedicated to
-                  creating interactive and intuitive digital experiences. With
-                  over 5 years of experience in front-end development, my goal
-                  is to combine aesthetics and functionality to create digital
-                  products that users love.&apos;
+                  I am a passionate interface designer dedicated to creating
+                  interactive and intuitive digital experiences. With over 5
+                  years of experience in front-end development, my goal is to
+                  combine aesthetics and functionality to create digital
+                  products that users love.
                 </p>
                 <Separator />
                 <p>
-                  &apos;When I&apos;m not designing interfaces, I enjoy
-                  exploring new design trends, contributing to open-source
-                  projects, and sharing knowledge with the design
-                  community.&apos;
+                  When I&apos;m not designing interfaces, I enjoy exploring new
+                  design trends, contributing to open-source projects, and
+                  sharing knowledge with the design community.
                 </p>
               </div>
             </div>

@@ -211,8 +211,8 @@ export function Experience() {
             <div className="flex items-center gap-2">
               <span className="text-green-500">🌱</span>
               <span>
-                &apos;I&apos;m currently learning Angular and Vue.js to expand
-                my framework expertise&apos;
+                I&apos;m currently learning Angular and Vue.js to expand
+                my framework expertise
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -231,8 +231,8 @@ export function Experience() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-700 italic">
-            &apos;Always seeking opportunities to collaborate with motivated
-            professionals on innovative and impactful projects.&apos;
+            Always seeking opportunities to collaborate with motivated
+            professionals on innovative and impactful projects.
           </p>
         </div>
       </div>

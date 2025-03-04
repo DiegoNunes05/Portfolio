@@ -91,7 +91,7 @@ export const portfolioSlice = createSlice({
     builder.addCase(HYDRATE, (state, action: HydrateAction) => {
       return {
         ...state,
-        ...action.payload.portfolio,
+        ...(action.payload as any).portfolio,
       };
     });
   },

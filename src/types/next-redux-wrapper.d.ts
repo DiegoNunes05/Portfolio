@@ -5,6 +5,6 @@ declare module 'next-redux-wrapper' {
   
   export interface HydrateAction extends AnyAction {
     type: typeof HYDRATE;
-    payload: unknown;
+    payload: string;
   }
 }
