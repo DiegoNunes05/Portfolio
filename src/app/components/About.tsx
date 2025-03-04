@@ -28,8 +28,8 @@ export function About() {
               <div className="space-y-4">
                 <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
                   &apos;Design isn&apos;t just about making things look pretty –
-                  it's about solving problems and creating intuitive, enjoyable
-                  experiences for users.&apos;
+                  it&apos;s about solving problems and creating intuitive,
+                  enjoyable experiences for users.&apos;
                 </blockquote>
                 <p>
                   &apos;I am a passionate interface designer dedicated to
