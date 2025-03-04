@@ -4,7 +4,10 @@ declare module 'next-redux-wrapper' {
   export const HYDRATE: '__NEXT_REDUX_WRAPPER_HYDRATE__';
   
   export interface HydrateAction extends AnyAction {
-    type: typeof HYDRATE;
-    payload: string;
-  }
+  type: typeof HYDRATE;
+  payload: {
+    portfolio?: PortfolioState;
+    [key: string]: any;  
+  };
+}
 }

@@ -30,6 +30,11 @@ export interface PortfolioState {
   }
 }
 
+// Interface para definir a forma do payload do HYDRATE
+interface HydratePayload {
+  portfolio: PortfolioState;
+}
+
 const initialState: PortfolioState = {
   name: 'Your Name',
   title: 'Front-end Developer',
@@ -89,10 +94,15 @@ export const portfolioSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(HYDRATE, (state, action: HydrateAction) => {
-      return {
-        ...state,
-        ...(action.payload as any).portfolio,
-      };
+      const payload = action.payload as unknown as HydratePayload;
+
+      if (payload && 'portfolio' in payload) {
+        return {
+          ...state,
+          ...payload.portfolio,
+        };
+      }
+      return state;
     });
   },
 });
