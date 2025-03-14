@@ -7,8 +7,9 @@ import {useEffect} from "react";
 export function Header() {
   
   useEffect(() => {
-    const handleAnchorClick = (e: any) => {
-      const href = e.currentTarget.getAttribute("href");
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      const href = target.getAttribute("href");
 
       if (href && href.startsWith("/#")) {
         e.preventDefault();
@@ -26,7 +27,8 @@ export function Header() {
       }
     };
 
-    const links = document.querySelectorAll("header a[href^='/#']");
+    const links = document.querySelectorAll<HTMLAnchorElement>("a[href^='/#']");
+    
     links.forEach((link) => {
       link.addEventListener("click", handleAnchorClick);
     });
