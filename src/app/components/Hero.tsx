@@ -96,7 +96,7 @@ export function Hero() {
               <Image
                 width={500}
                 height={600}
-                src="/images/dev-job.jpg"
+                src="https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="Portfolio Preview"
                 className="w-full h-full"
               />
