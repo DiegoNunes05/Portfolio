@@ -94,9 +94,9 @@ export function Hero() {
           <div className="flex justify-end">
             <div className="relative w-full max-w-lg">
               <Image
-                width={500}
-                height={600}
-                src="https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                width={1100}
+                height={700}
+                src="/images/dev-job-2.jpg"
                 alt="Portfolio Preview"
                 className="w-full h-full"
               />
