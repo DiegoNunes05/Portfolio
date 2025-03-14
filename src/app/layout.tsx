@@ -6,9 +6,9 @@ import { ReduxProvider } from "@/lib/redux/Provider";
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Portfolio - UI/UX Designer & Developer",
+  title: "Portfolio - Front-end Developer",
   description:
-    "Portfolio profissional com projetos de UI/UX e desenvolvimento web",
+    "Professional portfolio with web and mobile development projects",
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

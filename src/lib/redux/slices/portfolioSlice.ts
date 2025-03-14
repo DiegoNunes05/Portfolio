@@ -61,6 +61,16 @@ const initialState: PortfolioState = {
     },
     {
       id: '2',
+      title: 'Billor Driver App',
+      description: 'A betting house where you use fake money to improve your entries.',
+      images: [
+        '/videos/billor-driver-app.mp4'
+      ],
+      tags: ['React Native', 'Typescript', 'NativeUi'],
+      link: "https://github.com/DiegoNunes05/Billor-driver-app"
+    },
+    {
+      id: '3',
       title: 'Disc Rescue Network',
       description: 'Development of a mobile app for a tech startup.',
       images: [
@@ -71,7 +81,7 @@ const initialState: PortfolioState = {
       link: "https://app.discrescuenetwork.com/"
     },
     {
-      id: '3',
+      id: '4',
       title: 'DRN Admin Dashboard',
       description: 'Development of a dashboard for a tech startup.',
       images: [
@@ -86,7 +96,7 @@ const initialState: PortfolioState = {
       link: "https://drn-demo-admin-dashboard.vercel.app/"
     },
     {
-      id: '4',
+      id: '5',
       title: 'Fake Book Store',
       description: 'A fake store, made just to train RestAPI and Design',
       images: [
@@ -100,7 +110,7 @@ const initialState: PortfolioState = {
       link: "https://fake-book-store-a85mmqoj6-diegonunes05s-projects.vercel.app/"
     },
     {
-      id: '5',
+      id: '6',
       title: 'TestBet',
       description: 'A betting house where you use fake money to improve your entries.',
       images: [
@@ -112,16 +122,6 @@ const initialState: PortfolioState = {
       ],
       tags: ['Next.js', 'Typescript', 'Shadcn/ui', 'Rest API'],
       link: "https://test-asrtgjuqf-diegonunes05s-projects.vercel.app/landing-page"
-    },
-    {
-      id: '6',
-      title: 'Billor Driver App',
-      description: 'A betting house where you use fake money to improve your entries.',
-      images: [
-        '/videos/billor-driver-app.mp4'
-      ],
-      tags: ['React Native', 'Typescript', 'NativeUi'],
-      link: "https://github.com/DiegoNunes05/Billor-driver-app"
     },
   ],
   contact: {
