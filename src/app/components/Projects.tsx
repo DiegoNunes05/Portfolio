@@ -54,18 +54,6 @@ export function Projects() {
             </Card>
           ))}
         </div>
-        <div className="text-center mt-8">
-          <Button
-            variant="outline"
-            size="lg"
-            className="group relative overflow-hidden transition-all duration-300 cursor-pointer"
-          >
-            <span className="absolute left-0 top-0 h-full w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-              View All Projects
-            </span>
-          </Button>
-        </div>
       </div>
     </section>
   );
