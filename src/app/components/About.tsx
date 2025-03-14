@@ -39,9 +39,9 @@ export function About() {
                   enjoyable experiences for users.
                 </blockquote>
                 <p>
-                  I am a passionate interface designer dedicated to creating
+                  I am a passionate Front-end dedicated to creating
                   interactive and intuitive digital experiences. With over 5
-                  years of experience in front-end development, my goal is to
+                  years of experience, my goal is to
                   combine aesthetics and functionality to create digital
                   products that users love.
                 </p>

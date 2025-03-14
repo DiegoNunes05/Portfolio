@@ -10,7 +10,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  images: string[];  // Alterado para um array de strings
+  images: string[]; 
   tags: string[];
   link: string;
 }
@@ -31,7 +31,6 @@ export interface PortfolioState {
   }
 }
 
-// Interface para definir a forma do payload do HYDRATE
 interface HydratePayload {
   portfolio: PortfolioState;
 }
@@ -57,7 +56,7 @@ const initialState: PortfolioState = {
         '/projects/tropical.png',
         '/projects/tropical-2.png'
       ],
-      tags: ['UI/UX', 'React', 'Next.js', 'Tailwind'],
+      tags: ['Next.js', 'Typescript', 'RestAPI', 'Tailwind'],
       link: "https://tropical-bliss-wholesale-portal.vercel.app/",
     },
     {
@@ -99,6 +98,30 @@ const initialState: PortfolioState = {
       ],
       tags: ['Next.js', 'Typescript', 'Shadcn/ui', 'Rest API'],
       link: "https://fake-book-store-a85mmqoj6-diegonunes05s-projects.vercel.app/"
+    },
+    {
+      id: '5',
+      title: 'TestBet',
+      description: 'A betting house where you use fake money to improve your entries.',
+      images: [
+        '/projects/test-bet.png',
+        '/projects/test-bet-2.png',
+        '/projects/test-bet-3.png',
+        '/projects/test-bet-4.png',
+        '/projects/test-bet-5.png',
+      ],
+      tags: ['Next.js', 'Typescript', 'Shadcn/ui', 'Rest API'],
+      link: "https://test-asrtgjuqf-diegonunes05s-projects.vercel.app/landing-page"
+    },
+    {
+      id: '6',
+      title: 'Billor Driver App',
+      description: 'A betting house where you use fake money to improve your entries.',
+      images: [
+        '/videos/billor-driver-app.mp4'
+      ],
+      tags: ['React Native', 'Typescript', 'NativeUi'],
+      link: "https://github.com/DiegoNunes05/Billor-driver-app"
     },
   ],
   contact: {
