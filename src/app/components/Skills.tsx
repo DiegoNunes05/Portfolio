@@ -16,6 +16,7 @@ import {
   PerformanceIcon,
   ReactIcon,
   ReduxIcon,
+  ResponsiveDesignIcon,
   RestAPIIcon,
   SassIcon,
   SEOIcon,
@@ -33,14 +34,14 @@ const skillCategories = [
     skills: [
       {name: "React.js", rating: 5},
       {name: "Next.js", rating: 5},
-      {name: "Vue.js", rating: 4},
-      {name: "Nuxt.js", rating: 3},
+      {name: "React Native", rating: 5},
+      {name: "Vue.js", rating: 3},
     ],
   },
   {
     category: "Core Languages",
     skills: [
-      {name: "HTML/CSS", rating: 5},
+      {name: "Node.js", rating: 5},
       {name: "JavaScript", rating: 5},
       {name: "TypeScript", rating: 5},
     ],
@@ -103,7 +104,7 @@ export function Skills() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {skillCategories.map((category) => (
-            <Card key={category.category}>
+            <Card className="card-type" key={category.category}>
               <CardHeader>
                 <CardTitle>{category.category}</CardTitle>
               </CardHeader>
@@ -125,7 +126,7 @@ export function Skills() {
         <div className="mt-12 bg-white rounded-lg shadow-md p-6">
           <h3 className="text-2xl font-bold mb-4">Technical Expertise</h3>
           <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">Modern Front-End</h4>
               <ul className="space-y-1">
                 <IconItem icon={<ReactIcon />} text="React.js & React Native" />
@@ -138,7 +139,7 @@ export function Skills() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">Styling & UI</h4>
               <ul className="space-y-1">
                 <IconItem
@@ -157,7 +158,7 @@ export function Skills() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">State Management</h4>
               <ul className="space-y-1">
                 <IconItem icon={<ReduxIcon />} text="Redux & Redux Toolkit" />
@@ -170,7 +171,7 @@ export function Skills() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">Performance</h4>
               <ul className="space-y-1">
                 <IconItem
@@ -183,13 +184,13 @@ export function Skills() {
                 />
                 <IconItem icon={<SEOIcon />} text="SEO Optimization" />
                 <IconItem
-                  icon={<AccessibilityIcon />}
-                  text="Accessibility (WCAG 2.1)"
+                  icon={<ResponsiveDesignIcon />}
+                  text="Responsive Design"
                 />
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">Tools & Workflow</h4>
               <ul className="space-y-1">
                 <IconItem icon={<GitIcon />} text="Git & GitHub" />
@@ -202,7 +203,7 @@ export function Skills() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-md">
+            <div className="bg-gray-50 p-4 rounded-md card-type">
               <h4 className="font-semibold mb-2">Back-End Knowledge</h4>
               <ul className="space-y-1">
                 <IconItem icon={<NodeIcon />} text="Node.js & Express" />

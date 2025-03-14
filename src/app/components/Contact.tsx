@@ -17,7 +17,7 @@ export function Contact() {
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
-          <Card>
+          <Card className="card-type">
             <CardHeader>
               <CardTitle>Get in Touch</CardTitle>
             </CardHeader>
@@ -53,7 +53,7 @@ export function Contact() {
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="card-type">
             <CardHeader>
               <CardTitle>Request a Call</CardTitle>
             </CardHeader>
@@ -71,7 +71,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <label htmlFor="email" className="text-sm font-medium">
+                  <label htmlFor="email" className="text-sm font-medi</div>um">
                     Email
                   </label>
                   <input

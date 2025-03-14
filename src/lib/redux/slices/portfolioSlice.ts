@@ -10,8 +10,9 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  images: string[];  // Alterado para um array de strings
   tags: string[];
+  link: string;
 }
 
 export interface PortfolioState {
@@ -36,7 +37,7 @@ interface HydratePayload {
 }
 
 const initialState: PortfolioState = {
-  name: 'Your Name',
+  name: 'Diego Nunes',
   title: 'Front-end Developer',
   description: "I'm a user interface designer passionate about creating interactive and intuitive digital experiences.",
   skills: [
@@ -50,18 +51,55 @@ const initialState: PortfolioState = {
   projects: [
     {
       id: '1',
-      title: 'E-commerce Redesign',
+      title: 'Tropical Bliss Wholesale Portal',
       description: 'Complete redesign of an online store interface to improve user experience.',
-      image: '/images/project1.jpg',
-      tags: ['UI/UX', 'React', 'Next.js', 'Tailwind']
+      images: [
+        '/projects/tropical.png',
+        '/projects/tropical-2.png'
+      ],
+      tags: ['UI/UX', 'React', 'Next.js', 'Tailwind'],
+      link: "https://tropical-bliss-wholesale-portal.vercel.app/",
     },
     {
       id: '2',
-      title: 'Mobile App',
+      title: 'Disc Rescue Network',
       description: 'Development of a mobile app for a tech startup.',
-      image: '/images/project2.jpg',
-      tags: ['Mobile', 'React Native', 'UI Design']
-    },    
+      images: [
+        '/projects/disc-rescue.png',
+        '/projects/disc-rescue-2.png'
+      ],
+      tags: ['Next.js', 'Typescript', 'UI Design'],
+      link: "https://app.discrescuenetwork.com/"
+    },
+    {
+      id: '3',
+      title: 'DRN Admin Dashboard',
+      description: 'Development of a dashboard for a tech startup.',
+      images: [
+        '/projects/dashboard.png',
+        '/projects/dashboard-2.png',
+        '/projects/dashboard-3.png',
+        '/projects/dashboard-4.png',
+        '/projects/dashboard-5.png',
+        '/projects/dashboard-6.png'
+      ],
+      tags: ['Next.js', 'Typescript', 'Shadcn/ui'],
+      link: "https://drn-demo-admin-dashboard.vercel.app/"
+    },
+    {
+      id: '4',
+      title: 'Fake Book Store',
+      description: 'A fake store, made just to train RestAPI and Design',
+      images: [
+        '/projects/fake-book-store.png',
+        '/projects/fake-book-store-2.png',
+        '/projects/fake-book-store-3.png',
+        '/projects/fake-book-store-4.png',
+        '/projects/fake-book-store-5.png',
+      ],
+      tags: ['Next.js', 'Typescript', 'Shadcn/ui', 'Rest API'],
+      link: "https://fake-book-store-a85mmqoj6-diegonunes05s-projects.vercel.app/"
+    },
   ],
   contact: {
     email: 'diegonunesabc@gmail.com',

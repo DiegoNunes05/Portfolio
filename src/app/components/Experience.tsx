@@ -21,7 +21,7 @@ export function Experience() {
 
         <div className="space-y-8">
           {/* Primeira experiência */}
-          <Card>
+          <Card className="card-type">
             <CardHeader>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div className="flex gap-4 items-center">
@@ -141,7 +141,7 @@ export function Experience() {
           </Card>
 
           {/* Segunda experiência */}
-          <Card>
+          <Card className="card-type">
             <CardHeader>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div className="flex gap-4 items-center">

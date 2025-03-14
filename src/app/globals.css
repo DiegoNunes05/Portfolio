@@ -164,3 +164,18 @@ button[class*="Button"],
 .btn-outline:hover {
   background-color: var(--secondary);
 }
+
+.card-type {
+  border: 2px solid;
+}
+
+.card-type:hover {
+  box-shadow: 3px 3px;
+  transition: ease-in 0.3s;
+  transform: translateY(-2px);
+}
+
+.card-type-projects {
+  border: 2px solid;
+  box-shadow: 3px 3px;
+}

@@ -10,7 +10,7 @@ import { Experience } from "./components/Experience";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col transition-300">
       <Header />
       <Hero />
       <About />

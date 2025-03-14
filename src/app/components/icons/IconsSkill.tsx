@@ -335,27 +335,81 @@ export const SEOIcon = () => (
     </svg>
 );
 
-export const AccessibilityIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#718096"
-        strokeWidth="1.5"
-        className="text-gray-600"
-    >
-        <circle cx="12" cy="6" r="2" fill="currentColor" />
-        <path d="M12 14V8" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9 14L12 17L15 14" strokeLinecap="round" strokeLinejoin="round" />
-        <path
-            d="M20 10C20 16.0751 16.0751 20 10 20C3.92487 20 0 16.0751 0 10C0 3.92487 3.92487 0 10 0C16.0751 0 20 3.92487 20 10Z"
-            transform="translate(2 2)"
-            stroke="currentColor"
-            fill="none"
-        />
-    </svg>
+export const ResponsiveDesignIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#718096"
+    strokeWidth="1.5"
+    className="text-gray-600"
+  >
+    {/* Desktop */}
+    <rect
+      x="2"
+      y="3"
+      width="20"
+      height="12"
+      rx="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Desktop Screen */}
+    <rect
+      x="4"
+      y="5"
+      width="16"
+      height="8"
+      rx="0.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Tablet */}
+    <rect
+      x="8"
+      y="17"
+      width="8"
+      height="5"
+      rx="0.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Mobile */}
+    <rect
+      x="16"
+      y="15"
+      width="3"
+      height="6"
+      rx="0.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Connecting lines to show responsiveness */}
+    <line
+      x1="10"
+      y1="15"
+      x2="14"
+      y2="15"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="1,1"
+    />
+    <line
+      x1="16"
+      y1="14"
+      x2="16"
+      y2="14.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="1,1"
+    />
+  </svg>
 );
 
 export const GitIcon = () => (

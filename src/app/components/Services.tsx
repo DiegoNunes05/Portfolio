@@ -39,7 +39,7 @@ export function Services() {
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index}>
+            <Card className="card-type" key={index}>
               <CardHeader>
                 <div className="text-4xl mb-2">{service.icon}</div>
                 <CardTitle>{service.title}</CardTitle>
