@@ -45,7 +45,7 @@ export function Header() {
       <div className="container px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">
-            Developer Portfolio
+            Front-end Developer
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link
