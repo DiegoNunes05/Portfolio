@@ -22,7 +22,7 @@ export function Projects() {
       <div className="container px-4 md:px-6">
         <SlideUpAnimation>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">My Projects</h2>
+            <h2 className="text-3xl font-bold">Projects</h2>
             <p className="text-gray-500 mt-2">Check out my recent work</p>
           </div>
         </SlideUpAnimation>

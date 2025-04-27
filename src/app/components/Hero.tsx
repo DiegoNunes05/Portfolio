@@ -52,7 +52,7 @@ export function Hero() {
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <SlideUpAnimation>
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                 Welcome to my portfolio!
                 <br />
               </h1>

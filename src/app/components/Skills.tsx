@@ -103,7 +103,7 @@ export function Skills() {
     <section id="skills" className="w-full py-12 bg-gray-50">
       <div className="container px-4 md:px-6 mx-auto">
         <SlideUpAnimation>
-          <h2 className="text-3xl font-bold text-center mb-12">My Skills</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
         </SlideUpAnimation>
 
         <div className="grid gap-6 md:grid-cols-2">

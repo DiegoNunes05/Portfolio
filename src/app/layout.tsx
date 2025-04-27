@@ -1,7 +1,8 @@
+import "./globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import "./globals.css";
 import { ReduxProvider } from "@/lib/redux/Provider";
+import { ActiveSectionContextProvider } from './context/active-section-context'
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -15,7 +16,11 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <ActiveSectionContextProvider>
+            {children}
+          </ActiveSectionContextProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

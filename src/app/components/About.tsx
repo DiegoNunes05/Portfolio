@@ -11,7 +11,7 @@ export function About() {
   const {name} = useAppSelector((state) => state.portfolio);
 
   return (
-    <section id="about" className="w-full py-12 bg-gray-100">
+    <section id="about" className="w-full py-12 bg-gray-50">
       <div className="container px-4 md:px-6">
         <SlideUpAnimation>
           <h2 className="text-3xl font-bold text-center mb-12">Who I Am</h2>

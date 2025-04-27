@@ -36,7 +36,7 @@ export function Services() {
       <div className="container px-4 md:px-6">
         <SlideUpAnimation>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">My Services</h2>
+            <h2 className="text-3xl font-bold">Services</h2>
             <p className="text-gray-500 mt-2">What I can do for you</p>
           </div>
         </SlideUpAnimation>
@@ -45,7 +45,7 @@ export function Services() {
             <SlideUpAnimation key={index} delay={100 * (index + 1)}>
               <Card className="card-type">
                 <CardHeader>
-                  <div className="text-4xl mb-2">{service.icon}</div>
+                  <div className="text-3xl mb-2">{service.icon}</div>
                   <CardTitle>{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>

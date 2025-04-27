@@ -61,10 +61,16 @@ export function Header() {
               Projects
             </Link>
             <Link
+              href="/#experience"
+              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
+            >
+              Experience
+            </Link>
+            <Link
               href="/#skills"
               className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
             >
-              My Skills
+              Skills
             </Link>
             <Link
               href="/#services"
