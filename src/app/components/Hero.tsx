@@ -5,11 +5,61 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { ImagePlay } from "./icons/ImagePlay";
-import { SlideUpAnimation } from "./SlideUpAnimation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function Hero() {
   const { description } = useAppSelector((state) => state.portfolio);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Entrance timeline (above the fold → play on load).
+      // Use fromTo (explicit end state) so React StrictMode's double-invoke /
+      // useGSAP revert can never strand elements at opacity 0.
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.fromTo(
+        ".hero-title",
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 }
+      )
+        .fromTo(
+          ".hero-sub",
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6 },
+          "-=0.45"
+        )
+        .fromTo(
+          ".hero-cta",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.12 },
+          "-=0.3"
+        )
+        .fromTo(
+          ".hero-img-wrap",
+          { x: 60, opacity: 0, scale: 1.04 },
+          { x: 0, opacity: 1, scale: 1, duration: 0.9 },
+          "-=0.8"
+        );
+
+      // Subtle parallax on the hero image as the user scrolls.
+      gsap.to(".hero-img-wrap", {
+        yPercent: -12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
 
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -47,65 +97,61 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section ref={sectionRef} className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-          <SlideUpAnimation>
-            <div className="space-y-4">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Welcome to my portfolio!
-                <br />
-              </h1>
-              <p className="max-w-[700px] text-gray-500 md:text-xl">
-                {description}
-              </p>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="group relative overflow-hidden transition-all duration-300 cursor-pointer bg-black text-white border border-white hover:border-black"
+          <div className="space-y-4">
+            <h1 className="hero-title text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              Welcome to my portfolio!
+              <br />
+            </h1>
+            <p className="hero-sub max-w-[700px] text-gray-500 md:text-xl">
+              {description}
+            </p>
+            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Button
+                variant="outline"
+                size="lg"
+                className="hero-cta group relative overflow-hidden transition-all duration-300 cursor-pointer bg-black text-white border border-white hover:border-black"
+              >
+                <Link href="/#contact">
+                  <span className="absolute left-0 top-0 h-full w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  <span className="relative z-5 transition-colors duration-300 group-hover:text-black">
+                    Contact me
+                  </span>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="hero-cta group px-1 relative overflow-hidden transition-all duration-300 hover:px-3 bg-white hover:bg-gray-100"
+              >
+                <Link
+                  href="/#projects"
+                  className="flex items-center justify-center"
                 >
-                  <Link href="/#contact">
-                    <span className="absolute left-0 top-0 h-full w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-                    <span className="relative z-5 transition-colors duration-300 group-hover:text-black">
-                      Contact me
+                  <span className="flex items-center">
+                    <ImagePlay className="transform transition-transform duration-300 translate-y-10 group-hover:translate-y-0" />
+                    <span className="px-1 transform transition-transform duration-300 translate-x-[-8px] group-hover:translate-x-1">
+                      View Projects
                     </span>
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="group px-1 relative overflow-hidden transition-all duration-300 hover:px-3 bg-white hover:bg-gray-100"
-                >
-                  <Link
-                    href="/#projects"
-                    className="flex items-center justify-center"
-                  >
-                    <span className="flex items-center">
-                      <ImagePlay className="transform transition-transform duration-300 translate-y-10 group-hover:translate-y-0" />
-                      <span className="px-1 transform transition-transform duration-300 translate-x-[-8px] group-hover:translate-x-1">
-                        View Projects
-                      </span>
-                    </span>
-                  </Link>
-                </Button>
-              </div>
+                  </span>
+                </Link>
+              </Button>
             </div>
-          </SlideUpAnimation>
-          <SlideUpAnimation delay={200}>
-            <div className="flex justify-end">
-              <div className="relative w-full max-w-lg">
-                <Image
-                  width={1100}
-                  height={700}
-                  src="/images/dev-job-2.jpg"
-                  alt="Portfolio Preview"
-                  className="w-full h-full"
-                />
-              </div>
+          </div>
+          <div className="flex justify-end">
+            <div className="hero-img-wrap relative w-full max-w-lg">
+              <Image
+                width={1100}
+                height={700}
+                src="/images/dev-job-2.jpg"
+                alt="Portfolio Preview"
+                className="w-full h-full"
+              />
             </div>
-          </SlideUpAnimation>
+          </div>
         </div>
       </div>
     </section>

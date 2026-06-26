@@ -37,15 +37,15 @@ interface HydratePayload {
 
 const initialState: PortfolioState = {
   name: 'Diego Nunes',
-  title: 'Front-end Developer',
-  description: "I'm a user interface designer passionate about creating interactive and intuitive digital experiences.",
+  title: 'Senior Frontend Engineer',
+  description: "Senior Frontend Engineer specialized in complex, real-time web applications with React, TypeScript, and modern tooling.",
   skills: [
-    { name: 'HTML/CSS', level: 100 },
+    { name: 'React / Next.js', level: 95 },
     { name: 'TypeScript', level: 90 },
-    { name: 'React/Next.js', level: 90 },
-    { name: 'UI/UX Design', level: 80 },
+    { name: 'Real-Time / WebSocket', level: 85 },
     { name: 'Tailwind CSS', level: 95 },
-    { name: 'Redux', level: 90 },
+    { name: 'Redux / React Query', level: 90 },
+    { name: 'Node.js', level: 80 },
   ],
   projects: [
     {
@@ -62,7 +62,7 @@ const initialState: PortfolioState = {
     {
       id: '2',
       title: 'Billor Driver App',
-      description: 'A betting house where you use fake money to improve your entries.',
+      description: 'A React Native mobile app for Billor truck drivers.',
       images: [
         '/videos/billor-driver-app.mp4'
       ],
@@ -72,7 +72,7 @@ const initialState: PortfolioState = {
     {
       id: '3',
       title: 'Disc Rescue Network',
-      description: 'Development of a mobile app for a tech startup.',
+      description: 'Public-facing web platform for a disc-recovery startup.',
       images: [
         '/projects/disc-rescue.png',
         '/projects/disc-rescue-2.png'

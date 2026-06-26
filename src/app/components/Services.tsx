@@ -6,27 +6,27 @@ import {SlideUpAnimation} from "./SlideUpAnimation";
 export function Services() {
   const services = [
     {
-      title: "UI/UX Design",
+      title: "Frontend Architecture",
       description:
-        "Criação de interfaces intuitivas e agradáveis que proporcionam uma experiência excepcional para os usuários.",
-      icon: "✏️",
+        "Scalable, maintainable frontend architecture for complex apps — clean component design, state management, and modular structure.",
+      icon: "🧩",
     },
     {
       title: "Web Development",
       description:
-        "Desenvolvimento de websites e aplicações web com tecnologias modernas como React, Next.js e TailwindCSS.",
+        "Building web applications with modern technologies like React, Next.js, TypeScript, and Tailwind CSS.",
       icon: "💻",
     },
     {
-      title: "Responsive Design",
+      title: "Real-Time Interfaces",
       description:
-        "Criação de layouts que se adaptam perfeitamente a diferentes tamanhos de tela e dispositivos.",
-      icon: "📱",
+        "WebSocket-driven, data-heavy UIs that stay smooth and responsive under high-frequency updates.",
+      icon: "📡",
     },
     {
       title: "Performance Optimization",
       description:
-        "Otimização de aplicações web para máxima performance e velocidade de carregamento.",
+        "Optimizing web applications for top performance, fast load times, and solid Core Web Vitals.",
       icon: "⚡",
     },
   ];

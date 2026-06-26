@@ -1,8 +1,45 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+ * Light-only site: redefine the `dark:` variant to be class-based instead of
+ * the v4 default (prefers-color-scheme). With no `.dark` class anywhere, every
+ * `dark:` utility (e.g. shadcn's `dark:bg-input/30`) stays inert — so the OS
+ * dark mode never hijacks colors/contrast.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Tailwind v4 theme registration.
+ * In v4 the color utilities (bg-card, text-foreground, border-border, ...)
+ * are only generated when the tokens are declared here as --color-*.
+ * They map to the runtime CSS variables defined in :root below.
+ */
+@theme inline {
+  --font-sans: 'Inter', Arial, Helvetica, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
 :root {
@@ -31,74 +68,13 @@
   --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --card: #171717;
-    --card-foreground: #ededed;
-    --popover: #171717;
-    --popover-foreground: #ededed;
-    --primary: #ffffff;
-    --primary-foreground: #0a0a0a;
-    --secondary: #262626;
-    --secondary-foreground: #ededed;
-    --muted: #262626;
-    --muted-foreground: #a3a3a3;
-    --accent: #262626;
-    --accent-foreground: #ededed;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #ef4444;
-    --border: #262626;
-    --input: #262626;
-    --ring: #a3a3a3;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
-/* Classes para compatibilidade com shadcn/ui */
-.bg-background {
-  background-color: var(--background);
-}
-
-.bg-foreground {
-  color: var(--foreground);
-}
-
-.bg-primary {
-  background-color: var(--primary);
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.text-primary-foreground {
-  color: var(--primary-foreground);
-}
-
-.border-primary {
-  border-color: var(--primary);
-}
-
-.bg-secondary {
-  background-color: var(--secondary);
-}
-
-.text-secondary {
-  color: var(--secondary);
-}
-
-.border-border {
-  border-color: var(--border);
-}
-
-/* Estilo para containers */
+/* Container centralizado + larguras responsivas */
 .container {
   width: 100%;
   margin-left: auto;

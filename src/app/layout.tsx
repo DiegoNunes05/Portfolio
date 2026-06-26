@@ -7,9 +7,32 @@ import { ActiveSectionContextProvider } from './context/active-section-context'
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Portfolio - Front-end Developer",
+  metadataBase: new URL("https://portfolio-one-zeta-90.vercel.app"),
+  title: "Diego Nunes — Senior Frontend Engineer",
   description:
-    "Professional portfolio with web and mobile development projects",
+    "Senior Frontend Engineer specialized in complex, real-time web applications with React, TypeScript, and modern tooling.",
+  openGraph: {
+    type: "website",
+    url: "https://portfolio-one-zeta-90.vercel.app",
+    title: "Diego Nunes — Senior Frontend Engineer",
+    description:
+      "Senior Frontend Engineer specialized in complex, real-time web applications with React, TypeScript, and modern tooling.",
+    images: [
+      {
+        url: "/images/perfil.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Diego Nunes — Senior Frontend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diego Nunes — Senior Frontend Engineer",
+    description:
+      "Senior Frontend Engineer specialized in complex, real-time web applications with React, TypeScript, and modern tooling.",
+    images: ["/images/perfil.jpg"],
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

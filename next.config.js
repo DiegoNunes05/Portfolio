@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // GSAP entrance timelines (gsap.from/fromTo) get stranded by StrictMode's
+  // dev-only double-invoke + useGSAP auto-revert, leaving elements at opacity 0.
+  // Disabling only affects dev; production builds never double-invoke.
+  reactStrictMode: false,
   images: {
     domains: ['images.pexels.com'],
   },

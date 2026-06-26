@@ -3,20 +3,21 @@ import { Experience } from "./type";
 export const experienceData: Experience[] = [
     {
         id: "1",
-        title: "Front-End Developer",
+        title: "Senior Frontend Engineer",
         company: "Billor",
         location: "Joinville, Santa Catarina",
         startDate: "2025-04-01",
         endDate: "present",
         description: [
-            "Working as a Front-End Developer, building and maintaining modern web applications using cutting-edge technologies and best practices.",
+            "Senior Frontend Engineer owning the frontend architecture of two logistics products — an internal TMS and a public-facing broker platform — with full technical autonomy.",
         ],
         technologies: [
-            "Vue.js",
+            "React.js",
             "TypeScript",
             "Tailwind CSS",
-            "Node.js",
-            "React.js",
+            "WebSocket / Socket.IO",
+            "Mapbox GL",
+            "Framer Motion",
         ],
         achievements: [
             "Development and maintenance of the TMS (Transportation Management System), implementing continuous improvements to the interface and user experience.",
@@ -35,7 +36,7 @@ export const experienceData: Experience[] = [
         company: "Disc Rescue Network",
         location: "New Jersey, United States",
         startDate: "2024-01-01",
-        endDate: "",
+        endDate: "2025-09-01",
         description: [
             "Built and maintained key application features using React, Next.js, TypeScript, and Shadcn UI. My work included the development of the public-facing disc recovery platform and an administrative dashboard for disc management.",
         ],
@@ -56,7 +57,7 @@ export const experienceData: Experience[] = [
         ],
         logo: "/experience-images/disc-rescue-network.png",
         link: "https://discrescuenetwork.com",
-        position: true,
+        position: false,
         projects: [
             {
                 title: "Disc Rescue Platform",
@@ -80,8 +81,8 @@ export const experienceData: Experience[] = [
         title: "Front-End Developer",
         company: "Vortex Digital Enterprises",
         location: "Remote",
-        startDate: "2024-06-01",
-        endDate: "",
+        startDate: "2024-08-01",
+        endDate: "2025-09-01",
         description: [
             "Built and maintained key application features using React, Next.js, TypeScript, and Rest API. Focused on creating efficient and scalable e-commerce solutions.",
         ],
@@ -102,7 +103,7 @@ export const experienceData: Experience[] = [
         ],
         logo: "/experience-images/vortex.png",
         link: "#",
-        position: true,
+        position: false,
         projects: [
             {
                 title: "Tropical Bliss Wholesale Portal",

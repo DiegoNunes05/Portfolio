@@ -33,29 +33,29 @@ export function About() {
                   </Avatar>
                   <div className="text-center">
                     <h3 className="text-xl font-semibold">{name}</h3>
-                    <p className="text-sm text-gray-500">Front-end Developer</p>
+                    <p className="text-sm text-gray-500">Senior Frontend Engineer</p>
                   </div>
                 </div>
               </SlideUpAnimation>
               <SlideUpAnimation delay={200}>
                 <div className="space-y-4">
                   <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
-                    Design isn&apos;t just about making things look pretty –
-                    it&apos;s about solving problems and creating intuitive,
-                    enjoyable experiences for users.
+                    Great frontend isn&apos;t just the UI – it&apos;s the
+                    architecture, performance, and handling of real-world
+                    complexity that keep the experience effortless.
                   </blockquote>
                   <p>
-                    I am a passionate Front-end dedicated to creating
-                    interactive and intuitive digital experiences. With over 5
-                    years of experience, my goal is to
-                    combine aesthetics and functionality to create digital
-                    products that users love.
+                    I&apos;m a Senior Frontend Engineer focused on complex,
+                    real-time web applications. At Billor I own the frontend
+                    architecture of two logistics products — an internal TMS and
+                    a public-facing broker platform — built with React,
+                    TypeScript, and modern tooling.
                   </p>
                   <Separator />
                   <p>
-                    When I&apos;m not designing interfaces, I enjoy exploring new
-                    design trends, contributing to open-source projects, and
-                    sharing knowledge with the design community.
+                    I care about WebSocket-driven interfaces, smooth data-heavy
+                    UX, and clean component architecture — and I enjoy turning
+                    hard real-time problems into interfaces that just work.
                   </p>
                 </div>
               </SlideUpAnimation>
