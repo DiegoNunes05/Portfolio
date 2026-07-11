@@ -1,158 +1,120 @@
-"use client"
+"use client";
 
-import { useAppSelector } from "@/lib/redux/hooks";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import {useAppSelector} from "@/lib/redux/hooks";
 import Link from "next/link";
-import { ImagePlay } from "./icons/ImagePlay";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import {useEffect, useState} from "react";
 
 export function Hero() {
-  const { description } = useAppSelector((state) => state.portfolio);
-  const sectionRef = useRef<HTMLElement>(null);
+  const {name, title, description} = useAppSelector((s) => s.portfolio);
+  const [ready, setReady] = useState(false);
 
-  useGSAP(
-    () => {
-      // Entrance timeline (above the fold → play on load).
-      // Use fromTo (explicit end state) so React StrictMode's double-invoke /
-      // useGSAP revert can never strand elements at opacity 0.
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(
-        ".hero-title",
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 }
-      )
-        .fromTo(
-          ".hero-sub",
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.45"
-        )
-        .fromTo(
-          ".hero-cta",
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.5, stagger: 0.12 },
-          "-=0.3"
-        )
-        .fromTo(
-          ".hero-img-wrap",
-          { x: 60, opacity: 0, scale: 1.04 },
-          { x: 0, opacity: 1, scale: 1, duration: 0.9 },
-          "-=0.8"
-        );
-
-      // Subtle parallax on the hero image as the user scrolls.
-      gsap.to(".hero-img-wrap", {
-        yPercent: -12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    },
-    { scope: sectionRef }
-  );
-
+  // Play the entrance on mount (above the fold) — not scroll-gated.
   useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.currentTarget as HTMLAnchorElement;
-      const href = target.getAttribute("href");
-
-      if (href && href.startsWith("/#")) {
-        e.preventDefault();
-
-        const targetId = href.substring(2);
-        const element = document.getElementById(targetId);
-
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80,
-            behavior: "smooth",
-          });
-
-          window.history.pushState(null, "", href);
-        }
-      }
-    };
-
-    const links = document.querySelectorAll<HTMLAnchorElement>("a[href^='/#']");
-
-    links.forEach((link) => {
-      link.addEventListener("click", handleAnchorClick);
-    });
-
+    const id = requestAnimationFrame(() => setReady(true));
+    const failsafe = window.setTimeout(() => setReady(true), 600);
     return () => {
-      links.forEach((link) => {
-        link.removeEventListener("click", handleAnchorClick);
-      });
+      cancelAnimationFrame(id);
+      window.clearTimeout(failsafe);
     };
   }, []);
 
+  const [first, last] = name.split(" ");
+  const ease = "cubic-bezier(0.16,1,0.3,1)";
+
+  const lineStyle = (d: number): React.CSSProperties => ({
+    transform: ready ? "translateY(0)" : "translateY(105%)",
+    transition: `transform 1s ${ease}`,
+    transitionDelay: `${d}ms`,
+  });
+  const fadeStyle = (d: number): React.CSSProperties => ({
+    opacity: ready ? 1 : 0,
+    transform: ready ? "translateY(0)" : "translateY(24px)",
+    transition: `opacity 0.8s ${ease}, transform 0.8s ${ease}`,
+    transitionDelay: `${d}ms`,
+  });
+
   return (
-    <section ref={sectionRef} className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-          <div className="space-y-4">
-            <h1 className="hero-title text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-              Welcome to my portfolio!
-              <br />
-            </h1>
-            <p className="hero-sub max-w-[700px] text-gray-500 md:text-xl">
-              {description}
-            </p>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button
-                variant="outline"
-                size="lg"
-                className="hero-cta group relative overflow-hidden transition-all duration-300 cursor-pointer bg-black text-white border border-white hover:border-black"
-              >
-                <Link href="/#contact">
-                  <span className="absolute left-0 top-0 h-full w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-                  <span className="relative z-5 transition-colors duration-300 group-hover:text-black">
-                    Contact me
-                  </span>
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="hero-cta group px-1 relative overflow-hidden transition-all duration-300 hover:px-3 bg-white hover:bg-gray-100"
-              >
-                <Link
-                  href="/#projects"
-                  className="flex items-center justify-center"
-                >
-                  <span className="flex items-center">
-                    <ImagePlay className="transform transition-transform duration-300 translate-y-10 group-hover:translate-y-0" />
-                    <span className="px-1 transform transition-transform duration-300 translate-x-[-8px] group-hover:translate-x-1">
-                      View Projects
-                    </span>
-                  </span>
-                </Link>
-              </Button>
-            </div>
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden">
+      {/* Oversized ghost monogram */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-6 top-1/2 z-0 -translate-y-1/2 select-none font-display text-[38vw] font-light leading-none text-foreground/[0.035] md:text-[28vw]"
+        style={{
+          opacity: ready ? 1 : 0,
+          transition: `opacity 1.6s ${ease}`,
+        }}
+      >
+        {name
+          .split(" ")
+          .map((w) => w[0])
+          .join("")}
+      </span>
+
+      <div className="container relative z-10">
+        <div className="max-w-4xl">
+          <div
+            className="mb-8 flex items-center gap-4"
+            style={fadeStyle(700)}
+          >
+            <span className="rule" />
+            <p className="eyebrow">{title}</p>
           </div>
-          <div className="flex justify-end">
-            <div className="hero-img-wrap relative w-full max-w-lg">
-              <Image
-                width={1100}
-                height={700}
-                src="/images/dev-job-2.jpg"
-                alt="Portfolio Preview"
-                className="w-full h-full"
-              />
-            </div>
+
+          <h1 className="font-display text-[clamp(56px,11vw,150px)] font-light leading-[0.92] tracking-[-0.02em]">
+            <span className="block overflow-hidden pb-[0.05em]">
+              <span className="block" style={lineStyle(0)}>
+                {first}
+              </span>
+            </span>
+            <span className="block overflow-hidden pb-[0.05em]">
+              <span
+                className="block italic text-gold"
+                style={lineStyle(120)}
+              >
+                {last}
+              </span>
+            </span>
+          </h1>
+
+          <p
+            className="mt-10 max-w-xl font-sans text-base leading-relaxed text-silver md:text-lg"
+            style={fadeStyle(850)}
+          >
+            {description}
+          </p>
+
+          <div
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+            style={fadeStyle(1000)}
+          >
+            <Link
+              href="/#work"
+              className="group inline-flex items-center justify-center border border-foreground px-9 py-4 font-ui text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors duration-300 hover:bg-foreground hover:text-background"
+            >
+              View selected work
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-3 px-2 py-4 font-ui text-[11px] font-semibold uppercase tracking-[0.16em] text-silver transition-colors duration-300 hover:text-foreground"
+            >
+              Get in touch
+              <span aria-hidden className="text-gold">
+                →
+              </span>
+            </Link>
           </div>
         </div>
+      </div>
+
+      {/* Scroll cue */}
+      <div
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
+        style={fadeStyle(1200)}
+      >
+        <span className="font-ui text-[10px] uppercase tracking-[0.2em] text-silver">
+          Scroll
+        </span>
+        <span className="h-12 w-px bg-gradient-to-b from-gold to-transparent" />
       </div>
     </section>
   );

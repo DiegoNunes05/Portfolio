@@ -26,28 +26,26 @@ export function ProjectCarousel({project}: ProjectCarouselProps) {
       <CarouselContent>
         {project.images.map((file, index) => (
           <CarouselItem key={index}>
-            <div className="aspect-video w-full relative">
+            <div className="relative aspect-[16/10] w-full bg-graphite">
               {isVideo(file) ? (
                 <video
                   controls
                   autoPlay
                   muted
-                  className="w-full h-full object-cover"
-                  style={{objectFit: "contain"}}
+                  loop
+                  playsInline
+                  className="h-full w-full object-contain"
                 >
-                  <source
-                    src={file}
-                    type="video/mp4"/>
+                  <source src={file} type="video/mp4" />
                   Your browser does not support the video element.
                 </video>
               ) : (
                 <Image
-                  width={900}
-                  height={740}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 450px"
                   src={file}
-                  style={{objectFit: "fill"}}
-                  alt={`${project.title} - Image ${index + 1}`}
-                  className="object-cover w-full h-full"
+                  alt={`${project.title} — image ${index + 1}`}
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
               )}
             </div>
@@ -56,8 +54,8 @@ export function ProjectCarousel({project}: ProjectCarouselProps) {
       </CarouselContent>
       {project.images.length > 1 && (
         <>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselPrevious className="left-3 h-9 w-9 rounded-none border-hairline bg-background/70 text-foreground backdrop-blur-sm hover:border-gold hover:bg-background hover:text-gold" />
+          <CarouselNext className="right-3 h-9 w-9 rounded-none border-hairline bg-background/70 text-foreground backdrop-blur-sm hover:border-gold hover:bg-background hover:text-gold" />
         </>
       )}
     </Carousel>

@@ -1,97 +1,124 @@
 "use client";
 
 import Link from "next/link";
-import {Button} from "@/components/ui/button";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+
+const NAV = [
+  {href: "/#about", label: "About"},
+  {href: "/#work", label: "Work"},
+  {href: "/#experience", label: "Experience"},
+  {href: "/#expertise", label: "Expertise"},
+  {href: "/#services", label: "Services"},
+];
 
 export function Header() {
-  
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive: true});
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleAnchorClick = (e: Event) => {
       const target = e.currentTarget as HTMLAnchorElement;
       const href = target.getAttribute("href");
-
       if (href && href.startsWith("/#")) {
         e.preventDefault();
-
-        const targetId = href.substring(2);
-        const element = document.getElementById(targetId);
-
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80, 
-            behavior: "smooth",
-          });
+        const el = document.getElementById(href.substring(2));
+        if (el) {
+          window.scrollTo({top: el.offsetTop - 80, behavior: "smooth"});
           window.history.pushState(null, "", href);
         }
+        setOpen(false);
       }
     };
-
     const links = document.querySelectorAll<HTMLAnchorElement>("a[href^='/#']");
-    
-    links.forEach((link) => {
-      link.addEventListener("click", handleAnchorClick);
-    });
-
-    return () => {
-      links.forEach((link) => {
-        link.removeEventListener("click", handleAnchorClick);
-      });
-    };
+    links.forEach((l) => l.addEventListener("click", handleAnchorClick));
+    return () =>
+      links.forEach((l) => l.removeEventListener("click", handleAnchorClick));
   }, []);
 
   return (
-    <header className="w-full py-4 border-b fixed bg-white z-10">
-      <div className="container px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
-            Diego Nunes
-          </Link>
-          <nav className="hidden md:flex items-center gap-6">
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+        scrolled
+          ? "border-b border-hairline bg-background/85 py-4 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent py-6"
+      }`}
+    >
+      <div className="container flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-display text-2xl font-normal tracking-[0.02em] text-foreground"
+        >
+          Diego Nunes
+        </Link>
+
+        <nav className="hidden items-center gap-9 md:flex">
+          {NAV.map((item) => (
             <Link
-              href="/#about"
-              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
+              key={item.href}
+              href={item.href}
+              className="font-ui text-[12px] font-normal uppercase tracking-[0.14em] text-silver transition-colors duration-300 hover:text-foreground"
             >
-              About Me
+              {item.label}
             </Link>
-            <Link
-              href="/#projects"
-              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#experience"
-              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#skills"
-              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
-            >
-              Skills
-            </Link>
-            <Link
-              href="/#services"
-              className="text-sm font-medium hover:underline underline-offset-4 transition-all duration-300"
-            >
-              Services
-            </Link>
-          </nav>
-          <Button
-            variant="outline"
-            size="lg"
-            className="group relative overflow-hidden transition-all duration-300 cursor-pointer bg-black text-white border border-white hover:border-black"
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/#contact"
+            className="hidden border border-foreground/60 px-6 py-2.5 font-ui text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:inline-block"
           >
-            <Link href="/#contact">
-              <span className="absolute left-0 top-0 h-full w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
-                Contact me
-              </span>
-            </Link>
-          </Button>
+            Get in touch
+          </Link>
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+          >
+            <span
+              className={`h-px w-6 bg-foreground transition-all duration-300 ${
+                open ? "translate-y-[3.5px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-6 bg-foreground transition-all duration-300 ${
+                open ? "-translate-y-[3.5px] -rotate-45" : ""
+              }`}
+            />
+          </button>
         </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`overflow-hidden border-t border-hairline bg-background/95 backdrop-blur-md transition-all duration-500 md:hidden ${
+          open ? "max-h-96" : "max-h-0 border-transparent"
+        }`}
+      >
+        <nav className="container flex flex-col gap-5 py-8">
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="font-ui text-sm uppercase tracking-[0.14em] text-silver hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href="/#contact"
+            className="font-ui text-sm uppercase tracking-[0.14em] text-gold"
+          >
+            Get in touch
+          </Link>
+        </nav>
       </div>
     </header>
   );

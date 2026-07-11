@@ -1,67 +1,82 @@
 "use client";
 
-import {useAppSelector} from "@/lib/redux/hooks";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {Card, CardContent} from "@/components/ui/card";
-import {Separator} from "@/components/ui/separator";
-import perfil from "../../../public/images/perfil.jpg"
+import Image from "next/image";
 import {SlideUpAnimation} from "./SlideUpAnimation";
 
 export function About() {
-  const {name} = useAppSelector((state) => state.portfolio);
-
   return (
-    <section id="about" className="w-full py-12 bg-gray-50">
-      <div className="container px-4 md:px-6">
+    <section id="about" className="w-full scroll-mt-24 py-28 md:py-40">
+      <div className="container">
         <SlideUpAnimation>
-          <h2 className="text-3xl font-bold text-center mb-12">Who I Am</h2>
+          <div className="mb-16 flex items-center gap-4">
+            <span className="font-display text-lg text-gold">01</span>
+            <span className="rule" />
+            <p className="eyebrow">Who I Am</p>
+          </div>
         </SlideUpAnimation>
-        <Card className="card-type bg-white">
-          <CardContent className="p-6">
-            <div className="grid gap-6 md:grid-cols-[1fr_2fr] items-start">
-              <SlideUpAnimation delay={100}>
-                <div className="flex flex-col items-center gap-4">
-                  <Avatar className="w-40 h-40">
-                    <AvatarImage
-                      src={perfil.src}
-                      alt={name}
-                      width={120}
-                      height={120}
-                      style={{ objectFit: "cover" }}
-                    />
-                    <AvatarFallback>{name.slice(0, 2)}</AvatarFallback>
-                  </Avatar>
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold">{name}</h3>
-                    <p className="text-sm text-gray-500">Senior Frontend Engineer</p>
+
+        <div className="grid items-start gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-24">
+          {/* Statement */}
+          <SlideUpAnimation delay={100}>
+            <div>
+              <p className="font-display text-[clamp(28px,4vw,52px)] font-light leading-[1.2] tracking-[-0.01em]">
+                Great frontend isn&apos;t just the UI — it&apos;s the{" "}
+                <span className="italic text-gold">architecture</span>,
+                performance, and handling of real-world complexity that keep the
+                experience effortless.
+              </p>
+
+              <div className="mt-12 grid gap-8 sm:grid-cols-2">
+                <p className="font-sans text-[15px] leading-relaxed text-silver">
+                  I&apos;m a Senior Frontend Engineer focused on complex,
+                  real-time web applications. At Billor I own the frontend
+                  architecture of two logistics products — an internal TMS and a
+                  public-facing broker platform — built with React, TypeScript,
+                  and modern tooling.
+                </p>
+                <p className="font-sans text-[15px] leading-relaxed text-silver">
+                  I care about WebSocket-driven interfaces, smooth data-heavy UX,
+                  and clean component architecture — turning hard real-time
+                  problems into interfaces that simply work.
+                </p>
+              </div>
+
+              <div className="mt-14 flex flex-wrap gap-x-16 gap-y-8">
+                {[
+                  {n: "5+", l: "Years building"},
+                  {n: "2", l: "Products owned"},
+                  {n: "∞", l: "Real-time UIs"},
+                ].map((s) => (
+                  <div key={s.l}>
+                    <p className="font-display text-5xl font-light text-foreground">
+                      {s.n}
+                    </p>
+                    <p className="mt-2 font-ui text-[11px] uppercase tracking-[0.14em] text-silver">
+                      {s.l}
+                    </p>
                   </div>
-                </div>
-              </SlideUpAnimation>
-              <SlideUpAnimation delay={200}>
-                <div className="space-y-4">
-                  <blockquote className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
-                    Great frontend isn&apos;t just the UI – it&apos;s the
-                    architecture, performance, and handling of real-world
-                    complexity that keep the experience effortless.
-                  </blockquote>
-                  <p>
-                    I&apos;m a Senior Frontend Engineer focused on complex,
-                    real-time web applications. At Billor I own the frontend
-                    architecture of two logistics products — an internal TMS and
-                    a public-facing broker platform — built with React,
-                    TypeScript, and modern tooling.
-                  </p>
-                  <Separator />
-                  <p>
-                    I care about WebSocket-driven interfaces, smooth data-heavy
-                    UX, and clean component architecture — and I enjoy turning
-                    hard real-time problems into interfaces that just work.
-                  </p>
-                </div>
-              </SlideUpAnimation>
+                ))}
+              </div>
             </div>
-          </CardContent>
-        </Card>
+          </SlideUpAnimation>
+
+          {/* Portrait */}
+          <SlideUpAnimation delay={200}>
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="absolute -inset-3 border border-hairline" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden grayscale transition-all duration-700 hover:grayscale-0">
+                <Image
+                  src="/images/perfil.png"
+                  alt="Diego Nunes"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-3 -right-3 h-16 w-16 border-b border-r border-gold" />
+            </div>
+          </SlideUpAnimation>
+        </div>
       </div>
     </section>
   );
