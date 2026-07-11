@@ -8,6 +8,7 @@ import {useInView} from "react-intersection-observer";
 import {useActiveSectionContext} from "@/app/context/active-section-context";
 import {formatDates} from "@/app/format";
 import {SlideUpAnimation} from "../SlideUpAnimation";
+import {ArrowUpRight} from "lucide-react";
 
 export function Experience() {
   const {ref, inView} = useInView({threshold: 0.2});
@@ -28,37 +29,28 @@ export function Experience() {
     <section
       ref={ref}
       id="experience"
-      className="w-full scroll-mt-24 py-28 md:py-40"
+      className="w-full scroll-mt-24 py-24 md:py-32"
     >
       <div className="container">
-        <div className="mb-20 flex items-center gap-4">
-          <span className="font-display text-lg text-gold">03</span>
-          <span className="rule" />
-          <p className="eyebrow">Career</p>
-        </div>
+        <SlideUpAnimation>
+          <div className="mb-14">
+            <p className="eyebrow mb-4">{"// Career"}</p>
+            <h2 className="display text-[clamp(32px,5vw,56px)]">Experience</h2>
+          </div>
+        </SlideUpAnimation>
 
-        <div className="relative">
-          {/* vertical rail */}
-          <span className="absolute left-0 top-2 hidden h-full w-px bg-hairline md:block" />
-
-          <div className="flex flex-col gap-16 md:gap-24">
-            {experienceData.map((experience, index) => (
-              <SlideUpAnimation
-                key={experience.id}
-                delay={index * 60}
-                className="group relative md:pl-16"
-              >
-                {/* node */}
-                <span className="absolute -left-[5px] top-2 hidden h-[11px] w-[11px] rounded-full border border-gold bg-background transition-colors duration-300 group-hover:bg-gold md:block" />
-
-                <div className="grid gap-8 lg:grid-cols-[1fr_1.6fr]">
-                  {/* Left: identity */}
+        <div className="flex flex-col gap-5">
+          {experienceData.map((experience, index) => (
+            <SlideUpAnimation key={experience.id} delay={index * 60}>
+              <div className="card p-7 md:p-9">
+                <div className="grid gap-6 lg:grid-cols-[1fr_1.7fr] lg:gap-12">
+                  {/* Identity */}
                   <div>
-                    <p className="font-ui text-[11px] uppercase tracking-[0.16em] text-gold">
+                    <span className="inline-block rounded-full bg-surface-2 px-3 py-1 font-mono text-[11px] text-muted">
                       {formattedDates[experience.id]}
-                    </p>
+                    </span>
                     <div className="mt-5 flex items-center gap-4">
-                      <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden border border-hairline">
+                      <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-2xl border border-hairline">
                         <Image
                           src={experience.logo}
                           alt={`${experience.company} logo`}
@@ -72,41 +64,42 @@ export function Experience() {
                           href={experience.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-display text-xl leading-tight transition-colors duration-300 hover:text-gold"
+                          className="inline-flex items-center gap-1 text-lg font-semibold tracking-tight transition-colors duration-200 hover:text-accent"
                         >
                           {experience.company}
+                          <ArrowUpRight size={15} className="text-muted" />
                         </Link>
-                        <p className="font-ui text-[11px] uppercase tracking-[0.12em] text-silver">
+                        <p className="text-[13px] text-muted">
                           {experience.location}
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right: role + detail */}
+                  {/* Detail */}
                   <div>
-                    <h3 className="font-display text-2xl font-normal tracking-[-0.01em] md:text-3xl">
+                    <h3 className="text-xl font-semibold tracking-tight md:text-2xl">
                       {experience.title}
                     </h3>
                     {experience.description.map((desc, i) => (
                       <p
                         key={i}
-                        className="mt-4 font-sans text-[15px] leading-relaxed text-silver"
+                        className="mt-3 text-[15px] leading-relaxed text-muted"
                       >
                         {desc}
                       </p>
                     ))}
 
                     {experience.achievements && (
-                      <ul className="mt-6 space-y-3">
+                      <ul className="mt-5 space-y-2.5">
                         {experience.achievements.map((achievement, i) => (
                           <li
                             key={i}
-                            className="flex gap-3 font-sans text-sm leading-relaxed text-silver"
+                            className="flex gap-3 text-[14px] leading-relaxed text-muted"
                           >
                             <span
                               aria-hidden
-                              className="mt-2 h-px w-3 flex-shrink-0 bg-gold"
+                              className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"
                             />
                             {achievement}
                           </li>
@@ -114,11 +107,11 @@ export function Experience() {
                       </ul>
                     )}
 
-                    <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2">
+                    <div className="mt-6 flex flex-wrap gap-2">
                       {experience.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="font-ui text-[10px] uppercase tracking-[0.12em] text-foreground/70"
+                          className="rounded-full bg-surface-2 px-3 py-1 font-mono text-[11px] text-muted"
                         >
                           {tech}
                         </span>
@@ -126,8 +119,8 @@ export function Experience() {
                     </div>
 
                     {experience.projects && (
-                      <div className="mt-7 border-t border-hairline pt-6">
-                        <p className="mb-3 font-ui text-[10px] uppercase tracking-[0.16em] text-silver">
+                      <div className="mt-6 border-t border-hairline pt-5">
+                        <p className="mb-3 font-mono text-[11px] text-muted">
                           Projects
                         </p>
                         <div className="flex flex-col gap-2">
@@ -137,15 +130,13 @@ export function Experience() {
                               href={project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group/p inline-flex items-center gap-2 font-sans text-sm text-foreground/80 transition-colors hover:text-gold"
+                              className="group inline-flex items-center gap-1.5 text-[14px] font-medium text-foreground transition-colors hover:text-accent"
                             >
                               {project.title}
-                              <span
-                                aria-hidden
-                                className="text-gold opacity-0 transition-opacity group-hover/p:opacity-100"
-                              >
-                                →
-                              </span>
+                              <ArrowUpRight
+                                size={14}
+                                className="text-muted transition-transform group-hover:translate-x-0.5"
+                              />
                             </Link>
                           ))}
                         </div>
@@ -153,9 +144,9 @@ export function Experience() {
                     )}
                   </div>
                 </div>
-              </SlideUpAnimation>
-            ))}
-          </div>
+              </div>
+            </SlideUpAnimation>
+          ))}
         </div>
       </div>
     </section>

@@ -3,57 +3,69 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Bugatti-inspired luxury theme.
- * Void black canvas, thin light borders, three-font editorial hierarchy,
- * sparse gold accent. Depth from contrast + spacing, never gradients.
+ * Apple-inspired theme.
+ * Soft charcoal dark + airy light, generous rounded corners, frosted glass,
+ * SF-like sans (Inter), mono accents, Apple blue. Depth from subtle elevation.
  */
 @theme inline {
-  --font-display: var(--font-display); /* Cormorant Garamond */
-  --font-ui: var(--font-ui); /* Josefin Sans */
   --font-sans: var(--font-sans); /* Inter */
+  --font-mono: var(--font-mono); /* JetBrains Mono */
+  --font-display: var(--font-sans);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-graphite: var(--graphite);
-  --color-silver: var(--silver);
-  --color-gold: var(--gold);
-  --color-hairline: var(--hairline);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-hairline: var(--border);
 
-  /* shadcn tokens remapped onto the dark palette */
-  --color-card: var(--graphite);
+  /* shadcn remap */
+  --color-card: var(--surface);
   --color-card-foreground: var(--foreground);
-  --color-popover: var(--graphite);
+  --color-popover: var(--surface);
   --color-popover-foreground: var(--foreground);
-  --color-primary: var(--foreground);
-  --color-primary-foreground: var(--background);
-  --color-secondary: var(--graphite);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--surface-2);
   --color-secondary-foreground: var(--foreground);
-  --color-muted: var(--graphite);
-  --color-muted-foreground: var(--silver);
-  --color-accent: var(--gold);
-  --color-accent-foreground: var(--background);
-  --color-destructive: #ef4444;
+  --color-muted-foreground: var(--muted);
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ff3b30;
   --color-destructive-foreground: #ffffff;
-  --color-border: var(--hairline);
-  --color-input: var(--hairline);
-  --color-ring: var(--gold);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
 
-  --radius-lg: 2px;
-  --radius-md: 2px;
-  --radius-sm: 2px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f5f4f0;
-  --graphite: #141414;
-  --silver: #a3a099;
-  --gold: #c9a84c;
-  --hairline: rgba(245, 244, 240, 0.1);
+  /* Dark soft — default */
+  --background: #0b0b0d;
+  --surface: #161618;
+  --surface-2: #1f1f23;
+  --foreground: #f5f5f7;
+  --muted: #a1a1a6;
+  --accent: #0a84ff;
+  --accent-soft: rgba(10, 132, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.09);
 }
 
-* {
-  border-color: var(--hairline);
+html.light {
+  /* Airy light — apple.com */
+  --background: #fbfbfd;
+  --surface: #ffffff;
+  --surface-2: #f5f5f7;
+  --foreground: #1d1d1f;
+  --muted: #6e6e73;
+  --accent: #0071e3;
+  --accent-soft: rgba(0, 113, 227, 0.1);
+  --border: rgba(0, 0, 0, 0.09);
 }
 
 html {
@@ -63,68 +75,85 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--gold);
-  color: var(--background);
+  background: var(--accent);
+  color: #ffffff;
 }
 
-/* Wide, breathing container — luxury respires */
+/* Smooth theme switch (utilities win by specificity, so hovers keep their own) */
+body * {
+  transition: background-color 0.4s ease, border-color 0.4s ease,
+    color 0.4s ease;
+}
+
 .container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  max-width: 1360px;
+  max-width: 1200px;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-/* ---- Reusable Bugatti primitives ---- */
+/* ---- Apple primitives ---- */
 
+/* Mono eyebrow / technical label */
 .eyebrow {
-  font-family: var(--font-ui), sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
+  font-family: var(--font-mono), monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
 }
 
-.font-display {
-  font-family: var(--font-display), Georgia, serif;
+.font-mono {
+  font-family: var(--font-mono), monospace;
 }
 
-.font-ui {
-  font-family: var(--font-ui), sans-serif;
+/* Frosted surface */
+.glass {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
-/* Thin gold rule used to open sections */
-.rule {
-  height: 1px;
-  width: 3rem;
-  background: var(--gold);
+/* Elevated card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
 }
 
-/* Custom scrollbar — subtle, dark */
+/* Big display headline — Apple marketing tightness */
+.display {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: var(--border);
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: var(--muted);
 }

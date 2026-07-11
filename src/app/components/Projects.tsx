@@ -3,85 +3,72 @@
 import {useAppSelector} from "@/lib/redux/hooks";
 import {ProjectCarousel} from "./CarouselProjects";
 import Link from "next/link";
+import {ArrowUpRight} from "lucide-react";
 import {SlideUpAnimation} from "./SlideUpAnimation";
 
 export function Projects() {
   const {projects} = useAppSelector((state) => state.portfolio);
 
   return (
-    <section
-      id="work"
-      className="w-full scroll-mt-24 border-t border-hairline bg-graphite/30 py-28 md:py-40"
-    >
+    <section id="work" className="w-full scroll-mt-24 py-24 md:py-32">
       <div className="container">
         <SlideUpAnimation>
-          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <div className="mb-6 flex items-center gap-4">
-                <span className="font-display text-lg text-gold">02</span>
-                <span className="rule" />
-                <p className="eyebrow">Selected Work</p>
-              </div>
-              <h2 className="font-display text-[clamp(36px,5vw,64px)] font-light leading-none tracking-[-0.02em]">
+              <p className="eyebrow mb-4">{"// Selected work"}</p>
+              <h2 className="display text-[clamp(32px,5vw,56px)]">
                 Recent projects
               </h2>
             </div>
-            <p className="max-w-xs font-sans text-sm leading-relaxed text-silver">
-              A selection of products and interfaces I&apos;ve designed and
-              engineered — from real-time logistics tooling to public platforms.
+            <p className="max-w-xs text-[15px] leading-relaxed text-muted">
+              Products and interfaces I&apos;ve designed and engineered — from
+              real-time logistics tooling to public platforms.
             </p>
           </div>
         </SlideUpAnimation>
 
-        <div className="grid gap-px overflow-hidden border border-hairline bg-hairline md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <SlideUpAnimation
               key={project.id}
-              delay={80 * (index + 1)}
+              delay={70 * (index + 1)}
               className="h-full"
             >
-              <article className="group flex h-full flex-col bg-background transition-colors duration-500 hover:bg-graphite">
-                <div className="relative overflow-hidden border-b border-hairline">
-                  <span className="absolute left-4 top-4 z-10 font-display text-sm text-foreground/70">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+              <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-hairline bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
+                <div className="relative overflow-hidden">
                   <ProjectCarousel project={project} />
                 </div>
 
-                <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-2xl font-normal leading-tight tracking-[-0.01em]">
-                    {project.title}
-                  </h3>
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {project.title}
+                    </h3>
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.title}`}
+                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-surface-2 text-foreground transition-colors duration-200 group-hover:bg-accent group-hover:text-white"
+                    >
+                      <ArrowUpRight size={17} />
+                    </Link>
+                  </div>
+
+                  <p className="mt-3 flex-1 text-[14px] leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-ui text-[10px] uppercase tracking-[0.12em] text-gold"
+                        className="rounded-full bg-surface-2 px-3 py-1 font-mono text-[11px] text-muted"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <p className="mt-5 flex-1 font-sans text-sm leading-relaxed text-silver">
-                    {project.description}
-                  </p>
-
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center gap-3 font-ui text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground"
-                  >
-                    <span className="transition-colors duration-300 group-hover:text-gold">
-                      View project
-                    </span>
-                    <span
-                      aria-hidden
-                      className="text-gold transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </Link>
                 </div>
               </article>
             </SlideUpAnimation>

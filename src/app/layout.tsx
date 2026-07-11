@@ -1,27 +1,19 @@
 import "./globals.css";
 import type {Metadata} from "next";
-import {Cormorant_Garamond, Josefin_Sans, Inter} from "next/font/google";
+import {Inter, JetBrains_Mono} from "next/font/google";
 import {ReduxProvider} from "@/lib/redux/Provider";
 import {ActiveSectionContextProvider} from "./context/active-section-context";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const josefin = Josefin_Sans({
-  variable: "--font-ui",
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -54,12 +46,26 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint — applies the stored theme so there is no flash.
+// Dark is the default; only "light" adds a class.
+const themeScript = `
+try {
+  if (localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+  }
+} catch (e) {}
+`;
+
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${josefin.variable} ${inter.variable}`}
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{__html: themeScript}} />
+      </head>
       <body className="font-sans antialiased">
         <ReduxProvider>
           <ActiveSectionContextProvider>{children}</ActiveSectionContextProvider>

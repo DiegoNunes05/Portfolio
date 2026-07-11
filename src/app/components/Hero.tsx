@@ -3,12 +3,12 @@
 import {useAppSelector} from "@/lib/redux/hooks";
 import Link from "next/link";
 import {useEffect, useState} from "react";
+import {Github, Linkedin, ArrowRight} from "lucide-react";
 
 export function Hero() {
-  const {name, title, description} = useAppSelector((s) => s.portfolio);
+  const {name, description, contact} = useAppSelector((s) => s.portfolio);
   const [ready, setReady] = useState(false);
 
-  // Play the entrance on mount (above the fold) — not scroll-gated.
   useEffect(() => {
     const id = requestAnimationFrame(() => setReady(true));
     const failsafe = window.setTimeout(() => setReady(true), 600);
@@ -18,103 +18,89 @@ export function Hero() {
     };
   }, []);
 
-  const [first, last] = name.split(" ");
-  const ease = "cubic-bezier(0.16,1,0.3,1)";
-
-  const lineStyle = (d: number): React.CSSProperties => ({
-    transform: ready ? "translateY(0)" : "translateY(105%)",
-    transition: `transform 1s ${ease}`,
-    transitionDelay: `${d}ms`,
-  });
-  const fadeStyle = (d: number): React.CSSProperties => ({
+  const ease = "cubic-bezier(0.22,1,0.36,1)";
+  const rise = (d: number): React.CSSProperties => ({
     opacity: ready ? 1 : 0,
-    transform: ready ? "translateY(0)" : "translateY(24px)",
-    transition: `opacity 0.8s ${ease}, transform 0.8s ${ease}`,
+    transform: ready ? "translateY(0)" : "translateY(28px)",
+    transition: `opacity 0.9s ${ease}, transform 0.9s ${ease}`,
     transitionDelay: `${d}ms`,
   });
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden">
-      {/* Oversized ghost monogram */}
-      <span
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden pt-28">
+      {/* Soft Apple-style glow */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute -right-6 top-1/2 z-0 -translate-y-1/2 select-none font-display text-[38vw] font-light leading-none text-foreground/[0.035] md:text-[28vw]"
-        style={{
-          opacity: ready ? 1 : 0,
-          transition: `opacity 1.6s ${ease}`,
-        }}
-      >
-        {name
-          .split(" ")
-          .map((w) => w[0])
-          .join("")}
-      </span>
+        className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full opacity-60 blur-[120px]"
+        style={{background: "var(--accent-soft)"}}
+      />
 
       <div className="container relative z-10">
-        <div className="max-w-4xl">
-          <div
-            className="mb-8 flex items-center gap-4"
-            style={fadeStyle(700)}
-          >
-            <span className="rule" />
-            <p className="eyebrow">{title}</p>
-          </div>
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow mb-6" style={rise(0)}>
+            {name} — available for work
+          </p>
 
-          <h1 className="font-display text-[clamp(56px,11vw,150px)] font-light leading-[0.92] tracking-[-0.02em]">
-            <span className="block overflow-hidden pb-[0.05em]">
-              <span className="block" style={lineStyle(0)}>
-                {first}
-              </span>
-            </span>
-            <span className="block overflow-hidden pb-[0.05em]">
-              <span
-                className="block italic text-gold"
-                style={lineStyle(120)}
-              >
-                {last}
-              </span>
-            </span>
+          <h1
+            className="display text-[clamp(48px,9vw,116px)]"
+            style={rise(80)}
+          >
+            Senior Frontend
+            <br />
+            <span className="text-accent">Engineer</span>
           </h1>
 
           <p
-            className="mt-10 max-w-xl font-sans text-base leading-relaxed text-silver md:text-lg"
-            style={fadeStyle(850)}
+            className="mx-auto mt-8 max-w-2xl text-[clamp(16px,2vw,20px)] leading-relaxed text-muted"
+            style={rise(180)}
           >
             {description}
           </p>
 
           <div
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
-            style={fadeStyle(1000)}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            style={rise(280)}
           >
             <Link
               href="/#work"
-              className="group inline-flex items-center justify-center border border-foreground px-9 py-4 font-ui text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors duration-300 hover:bg-foreground hover:text-background"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition-transform duration-200 hover:scale-[1.03] active:scale-95"
             >
-              View selected work
+              View projects
+              <ArrowRight
+                size={17}
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              />
             </Link>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-3 px-2 py-4 font-ui text-[11px] font-semibold uppercase tracking-[0.16em] text-silver transition-colors duration-300 hover:text-foreground"
+              className="inline-flex items-center rounded-full border border-hairline px-7 py-3.5 text-[15px] font-semibold text-foreground transition-colors duration-200 hover:bg-surface-2"
             >
               Get in touch
-              <span aria-hidden className="text-gold">
-                →
-              </span>
             </Link>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll cue */}
-      <div
-        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
-        style={fadeStyle(1200)}
-      >
-        <span className="font-ui text-[10px] uppercase tracking-[0.2em] text-silver">
-          Scroll
-        </span>
-        <span className="h-12 w-px bg-gradient-to-b from-gold to-transparent" />
+          {/* Social chips */}
+          <div
+            className="mt-12 flex items-center justify-center gap-3"
+            style={rise(380)}
+          >
+            {[
+              {href: contact.social.github, label: "GitHub", Icon: Github},
+              {href: contact.social.linkedin, label: "LinkedIn", Icon: Linkedin},
+            ].map(({href, label, Icon}) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface/60 px-5 py-2.5 text-[13px] font-medium text-muted transition-colors duration-200 hover:border-transparent hover:bg-surface-2 hover:text-foreground"
+              >
+                <Icon size={15} />
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -5,66 +5,54 @@ import {SlideUpAnimation} from "./SlideUpAnimation";
 
 export function About() {
   return (
-    <section id="about" className="w-full scroll-mt-24 py-28 md:py-40">
+    <section id="about" className="w-full scroll-mt-24 py-24 md:py-32">
       <div className="container">
         <SlideUpAnimation>
-          <div className="mb-16 flex items-center gap-4">
-            <span className="font-display text-lg text-gold">01</span>
-            <span className="rule" />
-            <p className="eyebrow">Who I Am</p>
-          </div>
+          <p className="eyebrow mb-4">{"// About"}</p>
         </SlideUpAnimation>
 
-        <div className="grid items-start gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-24">
-          {/* Statement */}
-          <SlideUpAnimation delay={100}>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+          <SlideUpAnimation delay={80}>
             <div>
-              <p className="font-display text-[clamp(28px,4vw,52px)] font-light leading-[1.2] tracking-[-0.01em]">
-                Great frontend isn&apos;t just the UI — it&apos;s the{" "}
-                <span className="italic text-gold">architecture</span>,
-                performance, and handling of real-world complexity that keep the
-                experience effortless.
-              </p>
+              <h2 className="display text-[clamp(28px,4vw,46px)] leading-[1.1]">
+                Great frontend isn&apos;t just the UI. It&apos;s the{" "}
+                <span className="text-accent">architecture</span>, performance,
+                and real-world complexity that keep it effortless.
+              </h2>
 
-              <div className="mt-12 grid gap-8 sm:grid-cols-2">
-                <p className="font-sans text-[15px] leading-relaxed text-silver">
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                <p className="text-[15px] leading-relaxed text-muted">
                   I&apos;m a Senior Frontend Engineer focused on complex,
                   real-time web applications. At Billor I own the frontend
                   architecture of two logistics products — an internal TMS and a
-                  public-facing broker platform — built with React, TypeScript,
-                  and modern tooling.
+                  public-facing broker platform.
                 </p>
-                <p className="font-sans text-[15px] leading-relaxed text-silver">
-                  I care about WebSocket-driven interfaces, smooth data-heavy UX,
-                  and clean component architecture — turning hard real-time
-                  problems into interfaces that simply work.
+                <p className="text-[15px] leading-relaxed text-muted">
+                  React, TypeScript and modern tooling. I care about
+                  WebSocket-driven interfaces, smooth data-heavy UX, and clean
+                  component architecture — turning hard real-time problems into
+                  interfaces that simply work.
                 </p>
               </div>
 
-              <div className="mt-14 flex flex-wrap gap-x-16 gap-y-8">
+              <div className="mt-10 grid grid-cols-3 gap-3">
                 {[
                   {n: "5+", l: "Years building"},
                   {n: "2", l: "Products owned"},
-                  {n: "∞", l: "Real-time UIs"},
+                  {n: "10+", l: "Shipped apps"},
                 ].map((s) => (
-                  <div key={s.l}>
-                    <p className="font-display text-5xl font-light text-foreground">
-                      {s.n}
-                    </p>
-                    <p className="mt-2 font-ui text-[11px] uppercase tracking-[0.14em] text-silver">
-                      {s.l}
-                    </p>
+                  <div key={s.l} className="card p-5">
+                    <p className="display text-3xl md:text-4xl">{s.n}</p>
+                    <p className="mt-1.5 text-[13px] text-muted">{s.l}</p>
                   </div>
                 ))}
               </div>
             </div>
           </SlideUpAnimation>
 
-          {/* Portrait */}
-          <SlideUpAnimation delay={200}>
+          <SlideUpAnimation delay={160}>
             <div className="relative mx-auto w-full max-w-sm">
-              <div className="absolute -inset-3 border border-hairline" />
-              <div className="relative aspect-[4/5] w-full overflow-hidden grayscale transition-all duration-700 hover:grayscale-0">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-hairline">
                 <Image
                   src="/images/perfil.png"
                   alt="Diego Nunes"
@@ -73,7 +61,6 @@ export function About() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-3 -right-3 h-16 w-16 border-b border-r border-gold" />
             </div>
           </SlideUpAnimation>
         </div>

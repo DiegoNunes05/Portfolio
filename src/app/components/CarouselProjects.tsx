@@ -26,7 +26,7 @@ export function ProjectCarousel({project}: ProjectCarouselProps) {
       <CarouselContent>
         {project.images.map((file, index) => (
           <CarouselItem key={index}>
-            <div className="relative aspect-[16/10] w-full bg-graphite">
+            <div className="relative aspect-[16/10] w-full bg-surface-2">
               {isVideo(file) ? (
                 <video
                   controls
@@ -54,8 +54,8 @@ export function ProjectCarousel({project}: ProjectCarouselProps) {
       </CarouselContent>
       {project.images.length > 1 && (
         <>
-          <CarouselPrevious className="left-3 h-9 w-9 rounded-none border-hairline bg-background/70 text-foreground backdrop-blur-sm hover:border-gold hover:bg-background hover:text-gold" />
-          <CarouselNext className="right-3 h-9 w-9 rounded-none border-hairline bg-background/70 text-foreground backdrop-blur-sm hover:border-gold hover:bg-background hover:text-gold" />
+          <CarouselPrevious className="left-3 h-9 w-9 border-hairline bg-background/70 text-foreground backdrop-blur-md hover:bg-accent hover:text-white" />
+          <CarouselNext className="right-3 h-9 w-9 border-hairline bg-background/70 text-foreground backdrop-blur-md hover:bg-accent hover:text-white" />
         </>
       )}
     </Carousel>

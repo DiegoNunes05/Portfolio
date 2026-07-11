@@ -1,60 +1,61 @@
 "use client";
 
 import {SlideUpAnimation} from "./SlideUpAnimation";
+import {Layers, Code2, Radio, Gauge} from "lucide-react";
 
 const services = [
   {
     title: "Frontend Architecture",
     description:
-      "Scalable, maintainable frontend architecture for complex apps — clean component design, state management, and modular structure.",
+      "Scalable, maintainable architecture for complex apps — clean component design, state management, and modular structure.",
+    Icon: Layers,
   },
   {
-    title: "Web Application Development",
+    title: "Web App Development",
     description:
-      "Building production web applications with modern tooling — React, Next.js, TypeScript, and Tailwind CSS.",
+      "Production web applications with modern tooling — React, Next.js, TypeScript, and Tailwind CSS.",
+    Icon: Code2,
   },
   {
     title: "Real-Time Interfaces",
     description:
       "WebSocket-driven, data-heavy UIs that stay smooth and responsive under high-frequency updates.",
+    Icon: Radio,
   },
   {
     title: "Performance Optimization",
     description:
-      "Optimizing applications for top performance, fast load times, and solid Core Web Vitals.",
+      "Optimizing applications for fast load times, top performance, and solid Core Web Vitals.",
+    Icon: Gauge,
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="w-full scroll-mt-24 py-28 md:py-40">
+    <section id="services" className="w-full scroll-mt-24 py-24 md:py-32">
       <div className="container">
         <SlideUpAnimation>
-          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <div className="mb-6 flex items-center gap-4">
-                <span className="font-display text-lg text-gold">05</span>
-                <span className="rule" />
-                <p className="eyebrow">Services</p>
-              </div>
-              <h2 className="font-display text-[clamp(36px,5vw,64px)] font-light leading-none tracking-[-0.02em]">
-                What I do
-              </h2>
-            </div>
+          <div className="mb-14">
+            <p className="eyebrow mb-4">{"// Services"}</p>
+            <h2 className="display text-[clamp(32px,5vw,56px)]">What I do</h2>
           </div>
         </SlideUpAnimation>
 
-        <div className="border-t border-hairline">
+        <div className="grid gap-4 sm:grid-cols-2">
           {services.map((service, index) => (
-            <SlideUpAnimation key={service.title} delay={80 * (index + 1)}>
-              <div className="group grid grid-cols-1 items-baseline gap-4 border-b border-hairline py-10 transition-colors duration-500 hover:bg-graphite/40 md:grid-cols-[auto_1fr_1.2fr] md:gap-12 md:px-4">
-                <span className="font-display text-2xl font-light text-gold">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-2xl font-normal tracking-[-0.01em] transition-transform duration-500 md:text-3xl md:group-hover:translate-x-2">
+            <SlideUpAnimation
+              key={service.title}
+              delay={70 * (index + 1)}
+              className="h-full"
+            >
+              <div className="card group h-full p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+                  <service.Icon size={22} strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold tracking-tight">
                   {service.title}
                 </h3>
-                <p className="font-sans text-sm leading-relaxed text-silver">
+                <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {service.description}
                 </p>
               </div>
