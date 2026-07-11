@@ -23,26 +23,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const handleAnchorClick = (e: Event) => {
-      const target = e.currentTarget as HTMLAnchorElement;
-      const href = target.getAttribute("href");
-      if (href && href.startsWith("/#")) {
-        e.preventDefault();
-        const el = document.getElementById(href.substring(2));
-        if (el) {
-          window.scrollTo({top: el.offsetTop - 90, behavior: "smooth"});
-          window.history.pushState(null, "", href);
-        }
-        setOpen(false);
-      }
-    };
-    const links = document.querySelectorAll<HTMLAnchorElement>("a[href^='/#']");
-    links.forEach((l) => l.addEventListener("click", handleAnchorClick));
-    return () =>
-      links.forEach((l) => l.removeEventListener("click", handleAnchorClick));
-  }, []);
-
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <div
@@ -109,6 +89,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setOpen(false)}
               className="rounded-2xl px-4 py-3 text-sm font-medium text-muted hover:bg-surface-2 hover:text-foreground"
             >
               {item.label}
@@ -116,6 +97,7 @@ export function Header() {
           ))}
           <Link
             href="/#contact"
+            onClick={() => setOpen(false)}
             className="mt-1 rounded-2xl bg-accent px-4 py-3 text-center text-sm font-semibold text-white"
           >
             Get in touch

@@ -38,7 +38,7 @@ export function Hero() {
       <div className="container relative z-10">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow mb-6" style={rise(0)}>
-            {name} — available for work
+            {name} — Frontend Engineer @ Billor
           </p>
 
           <h1

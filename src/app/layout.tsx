@@ -3,6 +3,7 @@ import type {Metadata} from "next";
 import {Inter, JetBrains_Mono} from "next/font/google";
 import {ReduxProvider} from "@/lib/redux/Provider";
 import {ActiveSectionContextProvider} from "./context/active-section-context";
+import {SmoothScroll} from "./components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -68,7 +69,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       </head>
       <body className="font-sans antialiased">
         <ReduxProvider>
-          <ActiveSectionContextProvider>{children}</ActiveSectionContextProvider>
+          <ActiveSectionContextProvider>
+            <SmoothScroll>{children}</SmoothScroll>
+          </ActiveSectionContextProvider>
         </ReduxProvider>
       </body>
     </html>
